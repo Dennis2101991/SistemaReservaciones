@@ -5,5 +5,6 @@
     <asp:Label ID="LblDatos" runat="server" Text="Ingrese los datos"></asp:Label>
 
     <asp:TextBox ID="TextDatos" runat="server" Text="Datos"></asp:TextBox>
+  <h2>Prueba titulo dos</h2>
 
 </asp:Content>
