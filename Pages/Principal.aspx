@@ -7,4 +7,7 @@
     <asp:TextBox ID="TextDatos" runat="server" Text="Datos"></asp:TextBox>
   <h2>Prueba titulo dos</h2>
 
+    <br />
+    <h1>Prueba Stif</h1>
+
 </asp:Content>
