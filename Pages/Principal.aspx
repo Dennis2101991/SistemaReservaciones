@@ -9,5 +9,8 @@
 
     <br />
     <h1>Prueba Stif</h1>
+    <br />
+    <h6>Estamos probando</h6>
+    <asp:TextBox ID="Txtnombre" runat="server" Text="Nombre"></asp:TextBox>
 
 </asp:Content>
