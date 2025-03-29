@@ -264,6 +264,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PVProyectoFinal1.generated.cs</LastGenOutput>
     </Content>
+    <Content Include="Pages\Misreservaciones.aspx" />
     <Content Include="Pages\Principal.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -374,6 +375,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PVProyectoFinal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Misreservaciones.aspx.cs">
+      <DependentUpon>Misreservaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Misreservaciones.aspx.designer.cs">
+      <DependentUpon>Misreservaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
