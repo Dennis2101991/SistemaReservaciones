@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    
+   
     <div class="container py-5" id="reservar">
         <h2 class="text-center mb-4">Reserva tu habitación</h2>
         <p class="text-center lead">Elige entre nuestras cómodas habitaciones y disfruta de un servicio excepcional. ¡Haz tu reserva ahora!</p>
