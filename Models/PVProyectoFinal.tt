@@ -117,7 +117,10 @@
 	// to configure GetSchemaOptions properties, add them here, before load metadata call
 
 	//LoadSqlServerMetadata("MyServer", "MyDatabase", "User", "Password");
-    LoadSqlServerMetadata("DENNIS\\SQLEXPRESS", "PVProyectoFinal"); // Integrated Security
+	// Server Dennis
+    //LoadSqlServerMetadata("DENNIS\\SQLEXPRESS", "PVProyectoFinal"); // Integrated Security
+	// Server Stif
+	 LoadSqlServerMetadata("DESKTOP-C7O42T2\\SQLEXPRESS", "PV_ProyectoFinal");
 //	LoadSqlServerMetadata(string connectionString);
 
 	// to adjust loaded database model before generation, add your code here, after load metadata, but before GenerateModel() call
