@@ -47,9 +47,27 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                       <%-- 
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>
+                           --%>
+
+                        <li class="nav-item">
+                         <%--Boton para cerrar la sesión--%>
+                        <asp:LinkButton ID="lbtnCerrarSession" runat="server" CssClass="nav-link" OnClick="lbtnCerrarSession_Click">Cerrar Sesión</asp:LinkButton>
+                        </li>
+                         <%--Panel de confirmación para cerrar la sesión--%>
+                        <asp:Panel ID="pnlConfirmaCerrarSesion" runat="server" CssClass="modal-confirmacion" Visible="false" BackColor="#f8f9fa" 
+                                   BorderColor="Gray" BorderWidth="1px" Style="position: absolute; top: 20%; left: 30%; padding: 20px; z-index: 1000;">
+                        <asp:Label ID="lblConfirmacion" runat="server" Text="¿Está seguro de cerrar la sesión?" />
+                        <br /><br />
+                         <%--Botón de confirmación para cerrar la sesión--%>
+                       <asp:Button ID="btnConfirmaCerrarSesion" runat="server" Text="Sí, cerrar sesión" CssClass="btn btn-danger" OnClick="btnConfirmaCerrarSesion_Click" />
+                         <%--Botón para cancelar el cierre de la sesión--%>
+                       <asp:Button ID="btnCancelaCerrarSesion" runat="server" Text="Cancelar" CssClass="btn btn-secondary" OnClick="btnCancelaCerrarSesion_Click" />
+                    </asp:Panel>
+
                     </ul>
                 </div>
             </div>
