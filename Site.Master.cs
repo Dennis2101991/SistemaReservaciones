@@ -19,13 +19,12 @@ namespace SistemaReservaciones
                 if (Session["nombreCompleto"] != null)
                 {
                     lbtnCerrarSession.Visible = true; // Si la condición anterior se cumple el link button va a ser visible
-                    lblNombreCompleto.Text = "Bienvenido, " + Session["nombreCompleto"].ToString(); // Si la sesión tiene información, obtiene el nombre completo
+                    lblNombreCompleto.Text = "Bienvenid@, " + Session["nombreCompleto"].ToString(); // Si la sesión tiene información, obtiene el nombre completo
                 }
                 else
                 {
                     lbtnCerrarSession.Visible = false; // Si la condición anterior NO se cumple el link button va a ser invisible
                 }
-
             }
         }
 

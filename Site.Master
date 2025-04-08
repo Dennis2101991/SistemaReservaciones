@@ -50,8 +50,8 @@
                        <%-- 
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>
-                           --%>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>--%>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Misreservaciones">Mis Reservaciones</a></li>
 
                         <li class="nav-item">
                          <%--Boton para cerrar la sesión--%>
@@ -74,7 +74,7 @@
         </nav>
         <div style="color: blue;" >
         <!-- lbl para mostrar el nombre completo de la persona -->
-        <asp:Label ID="lblNombreCompleto" runat="server" Text="" CssClass="navbar-text" /> 
+        <asp:Label ID="lblNombreCompleto" runat="server" Text="" CssClass="btn-outline-primary" /> 
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
