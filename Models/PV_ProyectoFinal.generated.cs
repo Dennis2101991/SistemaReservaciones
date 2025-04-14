@@ -22,7 +22,7 @@ namespace DataModels
 {
 	/// <summary>
 	/// Database       : PV_ProyectoFinal
-	/// Data Source    : DESKTOP-C7O42T2\SQLEXPRESS
+	/// Data Source    : DENNIS\SQLEXPRESS
 	/// Server Version : 14.00.1000
 	/// </summary>
 	public partial class PvProyectoFinalDB : LinqToDB.Data.DataConnection
@@ -207,117 +207,23 @@ namespace DataModels
 
 	public static partial class PvProyectoFinalDBStoredProcedures
 	{
-		#region SpAlterdiagram
+		#region SpConsultarHoteles
 
-		public static int SpAlterdiagram(this PvProyectoFinalDB dataConnection, string @diagramname, int? @ownerId, int? @version, byte[] @definition)
+		public static IEnumerable<Hotel> SpConsultarHoteles(this PvProyectoFinalDB dataConnection, string @FiltroNombre, decimal? @CostoAdultoMin, decimal? @CostoAdultoMax, decimal? @CostoNinhoMin, decimal? @CostoNinhoMax)
 		{
 			var parameters = new []
 			{
-				new DataParameter("@diagramname", @diagramname, LinqToDB.DataType.NVarChar)
+				new DataParameter("@FiltroNombre",   @FiltroNombre,   LinqToDB.DataType.VarChar)
 				{
-					Size = 128
+					Size = 150
 				},
-				new DataParameter("@owner_id",    @ownerId,     LinqToDB.DataType.Int32),
-				new DataParameter("@version",     @version,     LinqToDB.DataType.Int32),
-				new DataParameter("@definition",  @definition,  LinqToDB.DataType.VarBinary)
-				{
-					Size = -1
-				}
+				new DataParameter("@CostoAdultoMin", @CostoAdultoMin, LinqToDB.DataType.Decimal),
+				new DataParameter("@CostoAdultoMax", @CostoAdultoMax, LinqToDB.DataType.Decimal),
+				new DataParameter("@CostoNinhoMin",  @CostoNinhoMin,  LinqToDB.DataType.Decimal),
+				new DataParameter("@CostoNinhoMax",  @CostoNinhoMax,  LinqToDB.DataType.Decimal)
 			};
 
-			return dataConnection.ExecuteProc("[dbo].[sp_alterdiagram]", parameters);
-		}
-
-		#endregion
-
-		#region SpCreatediagram
-
-		public static int SpCreatediagram(this PvProyectoFinalDB dataConnection, string @diagramname, int? @ownerId, int? @version, byte[] @definition)
-		{
-			var parameters = new []
-			{
-				new DataParameter("@diagramname", @diagramname, LinqToDB.DataType.NVarChar)
-				{
-					Size = 128
-				},
-				new DataParameter("@owner_id",    @ownerId,     LinqToDB.DataType.Int32),
-				new DataParameter("@version",     @version,     LinqToDB.DataType.Int32),
-				new DataParameter("@definition",  @definition,  LinqToDB.DataType.VarBinary)
-				{
-					Size = -1
-				}
-			};
-
-			return dataConnection.ExecuteProc("[dbo].[sp_creatediagram]", parameters);
-		}
-
-		#endregion
-
-		#region SpDropdiagram
-
-		public static int SpDropdiagram(this PvProyectoFinalDB dataConnection, string @diagramname, int? @ownerId)
-		{
-			var parameters = new []
-			{
-				new DataParameter("@diagramname", @diagramname, LinqToDB.DataType.NVarChar)
-				{
-					Size = 128
-				},
-				new DataParameter("@owner_id",    @ownerId,     LinqToDB.DataType.Int32)
-			};
-
-			return dataConnection.ExecuteProc("[dbo].[sp_dropdiagram]", parameters);
-		}
-
-		#endregion
-
-		#region SpHelpdiagramdefinition
-
-		public static IEnumerable<SpHelpdiagramdefinitionResult> SpHelpdiagramdefinition(this PvProyectoFinalDB dataConnection, string @diagramname, int? @ownerId)
-		{
-			var parameters = new []
-			{
-				new DataParameter("@diagramname", @diagramname, LinqToDB.DataType.NVarChar)
-				{
-					Size = 128
-				},
-				new DataParameter("@owner_id",    @ownerId,     LinqToDB.DataType.Int32)
-			};
-
-			return dataConnection.QueryProc<SpHelpdiagramdefinitionResult>("[dbo].[sp_helpdiagramdefinition]", parameters);
-		}
-
-		public partial class SpHelpdiagramdefinitionResult
-		{
-			[Column("version")   ] public int?   Version    { get; set; }
-			[Column("definition")] public byte[] Definition { get; set; }
-		}
-
-		#endregion
-
-		#region SpHelpdiagrams
-
-		public static IEnumerable<SpHelpdiagramsResult> SpHelpdiagrams(this PvProyectoFinalDB dataConnection, string @diagramname, int? @ownerId)
-		{
-			var parameters = new []
-			{
-				new DataParameter("@diagramname", @diagramname, LinqToDB.DataType.NVarChar)
-				{
-					Size = 128
-				},
-				new DataParameter("@owner_id",    @ownerId,     LinqToDB.DataType.Int32)
-			};
-
-			return dataConnection.QueryProc<SpHelpdiagramsResult>("[dbo].[sp_helpdiagrams]", parameters);
-		}
-
-		public partial class SpHelpdiagramsResult
-		{
-			public string Database { get; set; }
-			public string Name     { get; set; }
-			public int    ID       { get; set; }
-			public string Owner    { get; set; }
-			public int    OwnerID  { get; set; }
+			return dataConnection.QueryProc<Hotel>("[dbo].[SpConsultarHoteles]", parameters);
 		}
 
 		#endregion
@@ -350,46 +256,23 @@ namespace DataModels
 
 		#endregion
 
-		#region SpRenamediagram
+		#region SpObtenerReservacionesConUsuario
 
-		public static int SpRenamediagram(this PvProyectoFinalDB dataConnection, string @diagramname, int? @ownerId, string @newDiagramname)
+		public static IEnumerable<SpObtenerReservacionesConUsuarioResult> SpObtenerReservacionesConUsuario(this PvProyectoFinalDB dataConnection)
 		{
-			var parameters = new []
-			{
-				new DataParameter("@diagramname",     @diagramname,    LinqToDB.DataType.NVarChar)
-				{
-					Size = 128
-				},
-				new DataParameter("@owner_id",        @ownerId,        LinqToDB.DataType.Int32),
-				new DataParameter("@new_diagramname", @newDiagramname, LinqToDB.DataType.NVarChar)
-				{
-					Size = 128
-				}
-			};
-
-			return dataConnection.ExecuteProc("[dbo].[sp_renamediagram]", parameters);
+			return dataConnection.QueryProc<SpObtenerReservacionesConUsuarioResult>("[dbo].[SpObtenerReservacionesConUsuario]");
 		}
 
-		#endregion
-
-		#region SpUpgraddiagrams
-
-		public static int SpUpgraddiagrams(this PvProyectoFinalDB dataConnection)
+		public partial class SpObtenerReservacionesConUsuarioResult
 		{
-			return dataConnection.ExecuteProc("[dbo].[sp_upgraddiagrams]");
-		}
-
-		#endregion
-	}
-
-	public static partial class SqlFunctions
-	{
-		#region FnDiagramobjects
-
-		[Sql.Function(Name="[dbo].[fn_diagramobjects]", ServerSideOnly=true)]
-		public static int? FnDiagramobjects()
-		{
-			throw new InvalidOperationException();
+			public int      Id                { get; set; }
+			public string   NombreUsuario     { get; set; }
+			public string   Correo            { get; set; }
+			public DateTime FechaEntrada      { get; set; }
+			public DateTime FechaSalida       { get; set; }
+			public string   NombreHotel       { get; set; }
+			public string   NumeroHabitacion  { get; set; }
+			public char     EstadoReservacion { get; set; }
 		}
 
 		#endregion

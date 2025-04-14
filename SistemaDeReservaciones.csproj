@@ -295,9 +295,9 @@
     <Content Include="Global.asax" />
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
     <Content Include="LinqToDB.Templates\CopyMe.SqlServer.tt.txt" />
-    <Content Include="Models\PVProyectoFinal.tt">
+    <Content Include="Models\PV_ProyectoFinal.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PVProyectoFinal1.generated.cs</LastGenOutput>
+      <LastGenOutput>PV_ProyectoFinal.generated.cs</LastGenOutput>
     </Content>
     <Content Include="Pages\GestionarReservaciones.aspx" />
     <Content Include="Pages\Login.aspx" />
@@ -386,10 +386,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PVProyectoFinal1.generated.cs">
+    <Compile Include="Models\PV_ProyectoFinal.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PVProyectoFinal.tt</DependentUpon>
+      <DependentUpon>PV_ProyectoFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\GestionarReservaciones.aspx.cs">
       <DependentUpon>GestionarReservaciones.aspx</DependentUpon>

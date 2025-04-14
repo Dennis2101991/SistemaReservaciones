@@ -19,24 +19,7 @@ namespace SistemaReservaciones.Pages
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            /*
-             * PARA HACER LA PRUEBA MANUAL SIN BD
-            // Aquí verificamos  las credenciales de login (ojo esto es solo para ver como funciona la secuencia de las paginas creadas hasta hoy).
-            string email = txtEmail.Text;
-            string password = txtPassword.Text;
-
-            if (email == "RataNegra@hotmail.com" && password == "Rasta123")    // esto son los datos para probar las texbox
-            {
-                // Redirigir a la página de inicio (Home.aspx) si el login es correcto.
-                Response.Redirect("Misreservaciones.aspx"); // Redirige a la página Misreservaciones.
-            }
-            else
-            {
-                // Mostrar mensaje de error si las credenciales son incorrectas.
-                lblErrorMessage.Text = "Credenciales incorrectas. Intente nuevamente.";
-                lblErrorMessage.Visible = true;
-            }
-            */
+           
 
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
