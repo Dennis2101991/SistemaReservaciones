@@ -308,9 +308,9 @@ namespace DataModels
 			var parameters = new []
 			{
 				new DataParameter("@idPersona",     @idPersona,     LinqToDB.DataType.Int32),
-				new DataParameter("@nombreCliente", @nombreCliente, LinqToDB.DataType.VarChar)
+				new DataParameter("@nombreCliente", @nombreCliente, LinqToDB.DataType.NVarChar)
 				{
-					Size = 150
+					Size = 100
 				},
 				new DataParameter("@fechaEntrada",  @fechaEntrada,  LinqToDB.DataType.Date),
 				new DataParameter("@fechaSalida",   @fechaSalida,   LinqToDB.DataType.Date)
@@ -321,17 +321,15 @@ namespace DataModels
 
 		public partial class SpConsultarReservacionesEmpleadoResult
 		{
-			[Column("idReservacion")     ] public int      IdReservacion      { get; set; }
-			                               public string   Cliente            { get; set; }
-			                               public string   Hotel              { get; set; }
-			[Column("fechaEntrada")      ] public DateTime FechaEntrada       { get; set; }
-			[Column("fechaSalida")       ] public DateTime FechaSalida        { get; set; }
-			[Column("numeroAdultos")     ] public int      NumeroAdultos      { get; set; }
-			[Column("numeroNinhos")      ] public int      NumeroNinhos       { get; set; }
-			[Column("costoPorCadaAdulto")] public decimal  CostoPorCadaAdulto { get; set; }
-			[Column("costoPorCadaNinho") ] public decimal  CostoPorCadaNinho  { get; set; }
-			[Column("costoTotal")        ] public decimal  CostoTotal         { get; set; }
-			                               public string   Estado             { get; set; }
+			public int      Id                { get; set; }
+			public string   NombreUsuario     { get; set; }
+			public string   Correo            { get; set; }
+			public DateTime FechaEntrada      { get; set; }
+			public DateTime FechaSalida       { get; set; }
+			public string   NombreHotel       { get; set; }
+			public string   NumeroHabitacion  { get; set; }
+			public decimal  CostoTotal        { get; set; }
+			public string   EstadoReservacion { get; set; }
 		}
 
 		#endregion

@@ -6,7 +6,7 @@
       <div class="overlay d-flex justify-content-center align-items-center" style="background: rgba(0, 0, 0, 0.5); height:100%;">
           <div class="container py-5">
 
-              <h1 class="display-4 text-white text-center mb-4">Mis Reservaciones</h1>
+            <h1 class="display-4 text-white text-center mb-4">Mis Reservaciones</h1>
               <div class="text-left mb-4">
                   <a href="NuevaReservacion.aspx" class="btn btn-primary btn-lg">Nueva Reservación</a>
               </div>
