@@ -3,6 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="login-container">
         <h2>Iniciar sesión</h2>
+
+        <asp:Label ID="lblErrorMessage" runat="server" Text="Label"></asp:Label>
         
         <!-- Formulario de Login -->
         
