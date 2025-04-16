@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,11 +14,28 @@ namespace SistemaReservaciones.Pages
 		{
             if (!IsPostBack)
             {
-                if (Session["nombreCompleto"] == null)
+                if (Session["idPersona"] == null)
                 {
                     Response.Redirect("Login");
                 }
+
+                try
+                {
+                    int idUsuario = Convert.ToInt32(Session["idPersona"]);
+                    using (var db = new PvProyectoFinalDB("Conn"))
+                    {
+                        // Se invoca el SP que filtra por el id del usuario.
+                        var reservaciones = db.SpObtenerMisReservaciones(idUsuario).ToList();
+                        gvMisReservaciones.DataSource = reservaciones;
+                        gvMisReservaciones.DataBind();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
+
     }
 }

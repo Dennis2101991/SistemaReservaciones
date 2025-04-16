@@ -626,14 +626,11 @@ namespace DataModels
 
 		#region SpObtenerMisReservaciones
 
-		public static IEnumerable<SpObtenerMisReservacionesResult> SpObtenerMisReservaciones(this PvProyectoFinalDB dataConnection, string @CorreoUsuario)
+		public static IEnumerable<SpObtenerMisReservacionesResult> SpObtenerMisReservaciones(this PvProyectoFinalDB dataConnection, int? @IdUsuario)
 		{
 			var parameters = new []
 			{
-				new DataParameter("@CorreoUsuario", @CorreoUsuario, LinqToDB.DataType.NVarChar)
-				{
-					Size = 100
-				}
+				new DataParameter("@IdUsuario", @IdUsuario, LinqToDB.DataType.Int32)
 			};
 
 			return dataConnection.QueryProc<SpObtenerMisReservacionesResult>("[dbo].[SpObtenerMisReservaciones]", parameters);
@@ -669,7 +666,8 @@ namespace DataModels
 			public DateTime FechaSalida       { get; set; }
 			public string   NombreHotel       { get; set; }
 			public string   NumeroHabitacion  { get; set; }
-			public char     EstadoReservacion { get; set; }
+			public decimal  CostoTotal        { get; set; }
+			public string   EstadoReservacion { get; set; }
 		}
 
 		#endregion

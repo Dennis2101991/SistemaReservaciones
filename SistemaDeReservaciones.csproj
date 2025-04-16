@@ -304,6 +304,7 @@
     <Content Include="Pages\GestionarReservaciones.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Misreservaciones.aspx" />
+    <Content Include="Pages\NuevaReservacion.aspx" />
     <Content Include="Pages\Principal.aspx" />
     <Content Include="LinqToDB.Templates\Validation.ttinclude" />
     <Content Include="LinqToDB.Templates\T4Model.ttinclude" />
@@ -435,6 +436,13 @@
     </Compile>
     <Compile Include="Pages\Misreservaciones.aspx.designer.cs">
       <DependentUpon>Misreservaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NuevaReservacion.aspx.cs">
+      <DependentUpon>NuevaReservacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NuevaReservacion.aspx.designer.cs">
+      <DependentUpon>NuevaReservacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>

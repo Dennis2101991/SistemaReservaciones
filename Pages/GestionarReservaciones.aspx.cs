@@ -11,60 +11,57 @@ namespace SistemaReservaciones.Pages
 {
     public partial class GestionarReservaciones : System.Web.UI.Page
     {
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["nombreCompleto"] == null)
+                // Valida que el usuario esté autenticado y sea empleado.
+                if (Session["nombreCompleto"] == null || Session["idPersona"] == null || Session["esEmpleado"] == null)
                 {
-                    Response.Redirect("Login");
+                    Response.Redirect("Login.aspx");
+                    return;
                 }
-            }
-        }
-
-        protected void btnBuscar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var db = new PvProyectoFinalDB("Conn")) // Conexión al contexto LINQ to DB
+                bool esEmpleado = Convert.ToBoolean(Session["esEmpleado"]);
+                if (!esEmpleado)
                 {
-                    // Llamar al procedimiento almacenado para obtener reservaciones con usuario
-                    var reservaciones = db.SpObtenerReservacionesConUsuario().ToList();
+                    // Si el usuario no es empleado, redirige a la vista de MisReservaciones.
+                    Response.Redirect("Misreservaciones.aspx");
+                    return;
+                }
 
-                    // Mostrar los resultados en el GridView
-                    if (reservaciones.Any())
+                try
+                {
+                    using (var db = new PvProyectoFinalDB("Conn"))
                     {
-                        gvReservaciones.DataSource = reservaciones;
+                        // Se invoca el SP que retorna todas las reservaciones del sistema con los datos del cliente.
+                        var alumnos = db.SpObtenerReservacionesConUsuario().ToList();
+                        gvReservaciones.DataSource = alumnos;
                         gvReservaciones.DataBind();
-                        lblMensaje.Visible = false; // Ocultar mensaje de error
+
                     }
-                    else
-                    {
-                        lblMensaje.Text = "No se encontraron reservaciones.";
-                        lblMensaje.Visible = true;
-                    }
+
+                }
+
+                catch (Exception ex)
+                {
+
                 }
             }
-            catch (Exception ex)
-            {
-                // Manejo de errores
-                lblMensaje.Text = "Error al realizar la consulta: " + ex.Message;
-                lblMensaje.Visible = true;
-            }
         }
-
 
 
         protected void gvReservaciones_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Modificar")
+            if (e.CommandName == "Consultar")
             {
-                // Obtener el ID de la reservación desde el CommandArgument
                 int idReservacion = Convert.ToInt32(e.CommandArgument);
-
-                // Redirigir a la página de modificación con el ID como parámetro
-                Response.Redirect($"Modificar.aspx?id={idReservacion}");
+                // Redirige a la página de modificación pasando el id de la reservación por querystring.
+                Response.Redirect("Consultar.aspx?id=" + idReservacion);
             }
         }
+
     }
 }
