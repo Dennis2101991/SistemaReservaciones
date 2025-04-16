@@ -13,7 +13,13 @@ namespace SistemaReservaciones.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["nombreCompleto"] == null)
+                {
+                    Response.Redirect("Login");
+                }
+            }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)

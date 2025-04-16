@@ -15,6 +15,24 @@ namespace SistemaReservaciones
     {
 
         /// <summary>
+        /// Control liGestionarReservaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liGestionarReservaciones;
+
+        /// <summary>
+        /// Control liGestionarHabitaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liGestionarHabitaciones;
+
+        /// <summary>
         /// Control lbtnCerrarSession.
         /// </summary>
         /// <remarks>

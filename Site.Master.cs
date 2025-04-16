@@ -1,4 +1,5 @@
 ﻿using DataModels;
+using SistemaReservaciones.Pages;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +26,18 @@ namespace SistemaReservaciones
                 {
                     lbtnCerrarSession.Visible = false; // Si la condición anterior NO se cumple el link button va a ser invisible
                 }
+
+                // Verifica si el usuario es empleado
+                bool esEmpleado = false;
+
+                if (Session["esEmpleado"] != null)
+                {
+                    esEmpleado = Convert.ToBoolean(Session["esEmpleado"]);
+                }
+
+                // Oculta o muestra las opciones según el rol del usuario.
+                liGestionarReservaciones.Visible = esEmpleado;
+                liGestionarHabitaciones.Visible = esEmpleado;
             }
         }
 

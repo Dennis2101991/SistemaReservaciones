@@ -13,7 +13,7 @@ namespace SistemaReservaciones.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblErrorMessage.Visible = false; // Oculta el mensaje de error en cada carga
+            lblMensajeError.Visible = false; // Oculta el mensaje de error en cada carga
 
         }
 
@@ -26,8 +26,8 @@ namespace SistemaReservaciones.Pages
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                lblErrorMessage.Text = "Ingrese su correo y contraseña.";
-                lblErrorMessage.Visible = true;
+                lblMensajeError.Text = "Ingrese su correo y contraseña.";
+                lblMensajeError.Visible = true;
                 return;
             }
 
@@ -47,15 +47,15 @@ namespace SistemaReservaciones.Pages
                     }
                     else
                     {
-                        lblErrorMessage.Text = "Credenciales incorrectas o usuario inactivo.";
-                        lblErrorMessage.Visible = true;
+                        lblMensajeError.Text = "Credenciales incorrectas o usuario inactivo.";
+                        lblMensajeError.Visible = true;
                     }
                 }
             }
             catch (Exception ex)
             {
-                lblErrorMessage.Text = "Error en la conexión: " + ex.Message;
-                lblErrorMessage.Visible = true;
+                lblMensajeError.Text = "Error en la conexión: " + ex.Message;
+                lblMensajeError.Visible = true;
             }
 
 
