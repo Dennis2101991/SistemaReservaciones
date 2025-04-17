@@ -267,7 +267,8 @@ namespace DataModels
 		public partial class SpConsultarDisponibilidadHabitacionesResult
 		{
 			[Column("idHabitacion")   ] public int IdHabitacion    { get; set; }
-			[Column("capacidadMaxima")] public int CapacidadMaxima { get; set; }
+            [Column("numeroHabitacion")] public string NumeroHabitacion { get; set; }
+            [Column("capacidadMaxima")] public int CapacidadMaxima { get; set; }
 		}
 
 		#endregion
