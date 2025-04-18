@@ -22,13 +22,6 @@
                           <asp:BoundField DataField="costoTotal" HeaderText="Costo" DataFormatString="{0:$#,0.00}" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" />
                           <asp:BoundField DataField="EstadoVisual" HeaderText="Estado" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
 
-                          <asp:TemplateField HeaderText="">
-                              <ItemTemplate>
-                                  <asp:HyperLink ID="hlConsultar" runat="server" Text="Consultar" 
-                                      NavigateUrl='<%# "ConsultarReserva.aspx?id=" + Eval("idReservacion") %>' />
-                              </ItemTemplate>
-                          </asp:TemplateField>
-
                       </Columns>
                   </asp:GridView>
               </div>

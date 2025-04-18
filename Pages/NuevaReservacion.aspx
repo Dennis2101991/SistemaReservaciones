@@ -38,19 +38,19 @@
             <asp:RequiredFieldValidator ID="rfvFechaEntrada" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtFechaEntrada" CssClass="text-danger" Display="Dynamic" />
         </div>
         <div class="form-group">
-    <label for="txtFechaSalida">Fecha de salida:</label>
-    <asp:TextBox ID="txtFechaSalida" runat="server" CssClass="form-control" placeholder="dd/MM/yyyy" AutoPostBack="true" OnTextChanged="txtFecha_TextChanged"></asp:TextBox>
-    <ajaxToolkit:CalendarExtender ID="ceFechaSalida" runat="server" TargetControlID="txtFechaSalida" Format="dd/MM/yyyy" />
-    <asp:RequiredFieldValidator ID="rfvFechaSalida" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtFechaSalida" CssClass="text-danger" Display="Dynamic" />
-    <asp:CompareValidator ID="cvFechas" runat="server" ControlToCompare="txtFechaEntrada" ControlToValidate="txtFechaSalida" Operator="GreaterThan" Type="Date" ErrorMessage="La fecha de salida debe ser mayor a la fecha de entrada." CssClass="text-danger" Display="Dynamic" />
-</div>
-
+            <label for="txtFechaSalida">Fecha de salida:</label>
+            <asp:TextBox ID="txtFechaSalida" runat="server" CssClass="form-control" placeholder="dd/MM/yyyy" AutoPostBack="true" OnTextChanged="txtFecha_TextChanged"></asp:TextBox>
+            <ajaxToolkit:CalendarExtender ID="ceFechaSalida" runat="server" TargetControlID="txtFechaSalida" Format="dd/MM/yyyy" />
+            <asp:RequiredFieldValidator ID="rfvFechaSalida" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtFechaSalida" CssClass="text-danger" Display="Dynamic" />
+            <asp:CompareValidator ID="cvFechas" runat="server" ControlToCompare="txtFechaEntrada" ControlToValidate="txtFechaSalida" Operator="GreaterThan" Type="Date" ErrorMessage="La fecha de salida debe ser mayor a la fecha de entrada." CssClass="text-danger" Display="Dynamic" />
+        </div>
         <div class="form-group">
             <label for="txtTotal">Total de la reserva:</label>
             <asp:TextBox ID="txtTotal" runat="server" CssClass="form-control" ReadOnly="true" />
         </div>
         <div class="form-group">
             <asp:Button ID="btnReservar" runat="server" Text="Reservar" CssClass="btn btn-primary" OnClick="btnReservar_Click" />
+            <asp:Button ID="btnRegresar" runat="server" Text="Regresar" CssClass="btn btn-secondary" OnClick="btnRegresar_Click" />
         </div>
     </div>
 </asp:Content>

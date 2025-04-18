@@ -11,17 +11,8 @@ namespace SistemaReservaciones.Pages
 {
 
 
-    public partial class NuevaReservacion
+    public partial class ConsultarReserva
     {
-
-        /// <summary>
-        /// Control lblMensaje.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensaje;
 
         /// <summary>
         /// Control lblNombreCliente.
@@ -132,22 +123,40 @@ namespace SistemaReservaciones.Pages
         protected global::System.Web.UI.WebControls.CompareValidator cvFechas;
 
         /// <summary>
-        /// Control txtTotal.
+        /// Control txtDiasReserva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotal;
+        protected global::System.Web.UI.WebControls.TextBox txtDiasReserva;
 
         /// <summary>
-        /// Control btnReservar.
+        /// Control txtCostoTotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReservar;
+        protected global::System.Web.UI.WebControls.TextBox txtCostoTotal;
+
+        /// <summary>
+        /// Control btnActualizarReservacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActualizarReservacion;
+
+        /// <summary>
+        /// Control btnCancelarReservacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelarReservacion;
 
         /// <summary>
         /// Control btnRegresar.

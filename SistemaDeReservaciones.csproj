@@ -304,6 +304,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PV_ProyectoFinal.generated.cs</LastGenOutput>
     </Content>
+    <Content Include="Pages\ConsultarReserva.aspx" />
     <Content Include="Pages\GestionarReservaciones.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Misreservaciones.aspx" />
@@ -418,6 +419,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PV_ProyectoFinal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ConsultarReserva.aspx.cs">
+      <DependentUpon>ConsultarReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ConsultarReserva.aspx.designer.cs">
+      <DependentUpon>ConsultarReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\GestionarReservaciones.aspx.cs">
       <DependentUpon>GestionarReservaciones.aspx</DependentUpon>

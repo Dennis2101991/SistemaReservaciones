@@ -19,7 +19,6 @@ namespace SistemaReservaciones.Pages
                 {
                     Response.Redirect("Login");
                 }
-
                 CargarHoteles();
                 CargarNombreCliente();
                 LlenarListasCantidad();
@@ -58,14 +57,12 @@ namespace SistemaReservaciones.Pages
                 ddlAdultos.Items.Add(new ListItem(i.ToString(), i.ToString()));
             }
             ddlAdultos.Items.Insert(0, new ListItem("Seleccione cantidad", ""));
-
             for (int i = 0; i <= 10; i++)
             {
                 ddlNinos.Items.Add(new ListItem(i.ToString(), i.ToString()));
             }
             ddlNinos.Items.Insert(0, new ListItem("Seleccione cantidad", ""));
         }
-
 
         protected void ddlHotel_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -104,7 +101,6 @@ namespace SistemaReservaciones.Pages
         protected void btnReservar_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) return;
-
             try
             {
                 int idCliente = Convert.ToInt32(Session["idPersona"]);
@@ -119,7 +115,6 @@ namespace SistemaReservaciones.Pages
                     lblMensaje.Text = "La fecha de entrada no puede ser anterior a la fecha actual.";
                     return;
                 }
-
                 if (fechaSalida <= fechaEntrada)
                 {
                     lblMensaje.Text = "La fecha de salida debe ser mayor a la fecha de entrada.";
@@ -139,13 +134,17 @@ namespace SistemaReservaciones.Pages
                         new DataParameter("@estado", 'A')
                     );
                 }
-
                 lblMensaje.Text = "Reservación creada exitosamente.";
             }
             catch (Exception ex)
             {
                 lblMensaje.Text = "Error al crear la reservación: " + ex.Message;
             }
+        }
+
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Misreservaciones.aspx");
         }
 
         private decimal CalcularCostoTotal(int idHabitacion, DateTime fechaEntrada, DateTime fechaSalida, int adultos, int ninos)
@@ -157,13 +156,11 @@ namespace SistemaReservaciones.Pages
                 {
                     throw new Exception("Habitación no encontrada.");
                 }
-
                 var hotel = db.GetTable<Hotel>().FirstOrDefault(h => h.IdHotel == habitacion.IdHotel);
                 if (hotel == null)
                 {
                     throw new Exception("Hotel no encontrado.");
                 }
-
                 decimal precioAdulto = hotel.CostoPorCadaAdulto;
                 decimal precioNinho = hotel.CostoPorCadaNinho;
                 int dias = (fechaSalida - fechaEntrada).Days;
@@ -172,9 +169,6 @@ namespace SistemaReservaciones.Pages
                 return dias * (totalAdultos + totalNinos);
             }
         }
-
-
-
 
         protected void btnConsultarPrecio_Click(object sender, EventArgs e)
         {
@@ -185,7 +179,6 @@ namespace SistemaReservaciones.Pages
                 int ninos = Convert.ToInt32(ddlNinos.SelectedValue);
                 DateTime fechaEntrada = DateTime.ParseExact(txtFechaEntrada.Text, "dd/MM/yyyy", null);
                 DateTime fechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy", null);
-
                 decimal total = CalcularCostoTotal(idHabitacion, fechaEntrada, fechaSalida, adultos, ninos);
                 txtTotal.Text = total.ToString("C");
             }
@@ -202,7 +195,6 @@ namespace SistemaReservaciones.Pages
                 txtTotal.Text = "";
                 return;
             }
-
             try
             {
                 int idHabitacion = Convert.ToInt32(ddlHabitacion.SelectedValue);
@@ -210,7 +202,6 @@ namespace SistemaReservaciones.Pages
                 int ninos = Convert.ToInt32(ddlNinos.SelectedValue);
                 DateTime fechaEntrada = DateTime.ParseExact(txtFechaEntrada.Text, "dd/MM/yyyy", null);
                 DateTime fechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy", null);
-
                 decimal total = CalcularCostoTotal(idHabitacion, fechaEntrada, fechaSalida, adultos, ninos);
                 txtTotal.Text = total.ToString("C");
             }
