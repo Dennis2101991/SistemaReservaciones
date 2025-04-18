@@ -1,4 +1,5 @@
-﻿using DataModels;
+﻿// NuevaReservacion.aspx.cs
+using DataModels;
 using LinqToDB;
 using LinqToDB.Data;
 using System;
@@ -14,8 +15,26 @@ namespace SistemaReservaciones.Pages
         {
             if (!IsPostBack)
             {
+                if (Session["idPersona"] == null)
+                {
+                    Response.Redirect("Login");
+                }
+
                 CargarHoteles();
-                Page.DataBind(); // Asegura que las expresiones de enlace de datos se evalúen correctamente
+                CargarNombreCliente();
+                LlenarListasCantidad();
+                Page.DataBind();
+            }
+        }
+
+        private void CargarNombreCliente()
+        {
+            int idCliente = Convert.ToInt32(Session["idPersona"]);
+            using (var db = new PvProyectoFinalDB("Conn"))
+            {
+                var cliente = db.GetTable<Persona>().FirstOrDefault(p => p.IdPersona == idCliente);
+                if (cliente != null)
+                    lblNombreCliente.Text = cliente.NombreCompleto;
             }
         }
 
@@ -32,9 +51,40 @@ namespace SistemaReservaciones.Pages
             }
         }
 
+        private void LlenarListasCantidad()
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                ddlAdultos.Items.Add(new ListItem(i.ToString(), i.ToString()));
+            }
+            ddlAdultos.Items.Insert(0, new ListItem("Seleccione cantidad", ""));
+
+            for (int i = 0; i <= 10; i++)
+            {
+                ddlNinos.Items.Add(new ListItem(i.ToString(), i.ToString()));
+            }
+            ddlNinos.Items.Insert(0, new ListItem("Seleccione cantidad", ""));
+        }
+
+
         protected void ddlHotel_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarHabitaciones();
+        }
+
+        protected void ddlHabitacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarTotal();
+        }
+
+        protected void ddlCantidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarTotal();
+        }
+
+        protected void txtFecha_TextChanged(object sender, EventArgs e)
+        {
+            ActualizarTotal();
         }
 
         private void CargarHabitaciones()
@@ -59,6 +109,8 @@ namespace SistemaReservaciones.Pages
             {
                 int idCliente = Convert.ToInt32(Session["idPersona"]);
                 int idHabitacion = Convert.ToInt32(ddlHabitacion.SelectedValue);
+                int adultos = Convert.ToInt32(ddlAdultos.SelectedValue);
+                int ninos = Convert.ToInt32(ddlNinos.SelectedValue);
                 DateTime fechaEntrada = DateTime.ParseExact(txtFechaEntrada.Text, "dd/MM/yyyy", null);
                 DateTime fechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy", null);
 
@@ -74,17 +126,18 @@ namespace SistemaReservaciones.Pages
                     return;
                 }
 
+                // Llamar al SP usando LinqToDB
                 using (var db = new PvProyectoFinalDB("Conn"))
                 {
-                    db.Insert(new Reservacion
-                    {
-                        IdPersona = idCliente,
-                        IdHabitacion = idHabitacion,
-                        FechaEntrada = fechaEntrada,
-                        FechaSalida = fechaSalida,
-                        Estado = 'A',
-                        CostoTotal = CalcularCostoTotal(idHabitacion, fechaEntrada, fechaSalida)
-                    });
+                    db.ExecuteProc("sp_InsertarReservacion",
+                        new DataParameter("@idPersona", idCliente),
+                        new DataParameter("@idHabitacion", idHabitacion),
+                        new DataParameter("@fechaEntrada", fechaEntrada),
+                        new DataParameter("@fechaSalida", fechaSalida),
+                        new DataParameter("@numeroAdultos", adultos),
+                        new DataParameter("@numeroNinhos", ninos),
+                        new DataParameter("@estado", 'A')
+                    );
                 }
 
                 lblMensaje.Text = "Reservación creada exitosamente.";
@@ -95,10 +148,76 @@ namespace SistemaReservaciones.Pages
             }
         }
 
-        private decimal CalcularCostoTotal(int idHabitacion, DateTime fechaEntrada, DateTime fechaSalida)
+        private decimal CalcularCostoTotal(int idHabitacion, DateTime fechaEntrada, DateTime fechaSalida, int adultos, int ninos)
         {
-            // Implementa la lógica para calcular el costo total de la reservación
-            return 0; // Ejemplo: retorna 0, debes reemplazarlo con la lógica adecuada
+            using (var db = new PvProyectoFinalDB("Conn"))
+            {
+                var habitacion = db.GetTable<Habitacion>().FirstOrDefault(h => h.IdHabitacion == idHabitacion);
+                if (habitacion == null)
+                {
+                    throw new Exception("Habitación no encontrada.");
+                }
+
+                var hotel = db.GetTable<Hotel>().FirstOrDefault(h => h.IdHotel == habitacion.IdHotel);
+                if (hotel == null)
+                {
+                    throw new Exception("Hotel no encontrado.");
+                }
+
+                decimal precioAdulto = hotel.CostoPorCadaAdulto;
+                decimal precioNinho = hotel.CostoPorCadaNinho;
+                int dias = (fechaSalida - fechaEntrada).Days;
+                decimal totalAdultos = adultos * precioAdulto;
+                decimal totalNinos = ninos * precioNinho;
+                return dias * (totalAdultos + totalNinos);
+            }
+        }
+
+
+
+
+        protected void btnConsultarPrecio_Click(object sender, EventArgs e)
+        {
+            if (ddlHabitacion.SelectedValue != "" && ddlAdultos.SelectedValue != "" && ddlNinos.SelectedValue != "" && txtFechaEntrada.Text != "" && txtFechaSalida.Text != "")
+            {
+                int idHabitacion = Convert.ToInt32(ddlHabitacion.SelectedValue);
+                int adultos = Convert.ToInt32(ddlAdultos.SelectedValue);
+                int ninos = Convert.ToInt32(ddlNinos.SelectedValue);
+                DateTime fechaEntrada = DateTime.ParseExact(txtFechaEntrada.Text, "dd/MM/yyyy", null);
+                DateTime fechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy", null);
+
+                decimal total = CalcularCostoTotal(idHabitacion, fechaEntrada, fechaSalida, adultos, ninos);
+                txtTotal.Text = total.ToString("C");
+            }
+        }
+
+        private void ActualizarTotal()
+        {
+            if (string.IsNullOrEmpty(ddlHabitacion.SelectedValue) ||
+                string.IsNullOrEmpty(txtFechaEntrada.Text) ||
+                string.IsNullOrEmpty(txtFechaSalida.Text) ||
+                string.IsNullOrEmpty(ddlAdultos.SelectedValue) ||
+                string.IsNullOrEmpty(ddlNinos.SelectedValue))
+            {
+                txtTotal.Text = "";
+                return;
+            }
+
+            try
+            {
+                int idHabitacion = Convert.ToInt32(ddlHabitacion.SelectedValue);
+                int adultos = Convert.ToInt32(ddlAdultos.SelectedValue);
+                int ninos = Convert.ToInt32(ddlNinos.SelectedValue);
+                DateTime fechaEntrada = DateTime.ParseExact(txtFechaEntrada.Text, "dd/MM/yyyy", null);
+                DateTime fechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy", null);
+
+                decimal total = CalcularCostoTotal(idHabitacion, fechaEntrada, fechaSalida, adultos, ninos);
+                txtTotal.Text = total.ToString("C");
+            }
+            catch
+            {
+                txtTotal.Text = "";
+            }
         }
     }
 }

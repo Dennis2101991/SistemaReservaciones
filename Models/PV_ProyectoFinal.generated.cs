@@ -100,12 +100,12 @@ namespace DataModels
 		[Column("descripcion"),      NotNull             ] public string Descripcion      { get; set; } // varchar(500)
 		[Column("estado"),           NotNull             ] public char   Estado           { get; set; } // varchar(1)
 
-		#region Associations
+        #region Associations
 
-		/// <summary>
-		/// FK_Habitacion_Hotel (dbo.Hotel)
-		/// </summary>
-		[Association(ThisKey="IdHotel", OtherKey="IdHotel", CanBeNull=false)]
+        /// <summary>
+        /// FK_Habitacion_Hotel (dbo.Hotel)
+        /// </summary>
+        [Association(ThisKey="IdHotel", OtherKey="IdHotel", CanBeNull=false)]
 		public Hotel Hotel { get; set; }
 
 		/// <summary>
@@ -117,27 +117,25 @@ namespace DataModels
 		#endregion
 	}
 
-	[Table(Schema="dbo", Name="Hotel")]
-	public partial class Hotel
-	{
-		[Column("idHotel"),            PrimaryKey,  Identity] public int     IdHotel            { get; set; } // int
-		[Column("nombre"),             NotNull              ] public string  Nombre             { get; set; } // varchar(150)
-		[Column("direccion"),             Nullable          ] public string  Direccion          { get; set; } // varchar(500)
-		[Column("costoPorCadaAdulto"), NotNull              ] public decimal CostoPorCadaAdulto { get; set; } // numeric(10, 2)
-		[Column("costoPorCadaNinho"),  NotNull              ] public decimal CostoPorCadaNinho  { get; set; } // numeric(10, 2)
+    [Table(Schema = "dbo", Name = "Hotel")]
+    public partial class Hotel
+    {
+        [Column("idHotel"), PrimaryKey, Identity] public int IdHotel { get; set; } // int
+        [Column("nombre"), NotNull] public string Nombre { get; set; } // varchar(150)
+        [Column("direccion"), Nullable] public string Direccion { get; set; } // varchar(500)
+        [Column("costoPorCadaAdulto"), NotNull] public decimal CostoPorCadaAdulto { get; set; } // numeric(10, 2)
+        [Column("costoPorCadaNinho"), NotNull] public decimal CostoPorCadaNinho { get; set; } // numeric(10, 2)
 
-		#region Associations
+        #region Associations
 
-		/// <summary>
-		/// FK_Habitacion_Hotel_BackReference (dbo.Habitacion)
-		/// </summary>
-		[Association(ThisKey="IdHotel", OtherKey="IdHotel", CanBeNull=true)]
-		public IEnumerable<Habitacion> Habitacions { get; set; }
+        [Association(ThisKey = "IdHotel", OtherKey = "IdHotel", CanBeNull = true)]
+        public IEnumerable<Habitacion> Habitacions { get; set; }
 
-		#endregion
-	}
+        #endregion
+    }
 
-	[Table(Schema="dbo", Name="Persona")]
+
+    [Table(Schema="dbo", Name="Persona")]
 	public partial class Persona
 	{
 		[Column("idPersona"),      PrimaryKey, Identity] public int    IdPersona      { get; set; } // int
