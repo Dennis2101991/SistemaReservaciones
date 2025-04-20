@@ -8,23 +8,33 @@
 
             <h1 class="display-4 text-white text-center mb-4">Mis Reservaciones</h1>
               <div class="text-left mb-4">
-                  <a href="NuevaReservacion.aspx" class="btn btn-primary btn-lg">Nueva Reservación</a>
+                  <a href="CrearReservacion.aspx" class="btn btn-primary btn-lg">Nueva Reservación</a>
               </div>
-              <!-- GridView que muestra las reservaciones del usuario -->
-              <div class="card p-4 bg-light">
-                  <asp:GridView ID="gvMisReservaciones" runat="server" AutoGenerateColumns="false" CssClass="table table-striped">
-                      <Columns>
+              <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
+             <div class="card p-4 bg-light">
+    <asp:GridView ID="gvMisReservaciones" runat="server" AutoGenerateColumns="false" CssClass="table table-striped">
+        <Columns>
+            
+            <asp:BoundField DataField="idReservacion" HeaderText="# reservacion" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+            <asp:BoundField DataField="NombreHotel" HeaderText="Hotel" HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
+            <asp:BoundField DataField="fechaEntrada" HeaderText="Fecha entrada" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+            <asp:BoundField DataField="fechaSalida" HeaderText="Fecha salida" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+            <asp:BoundField DataField="costoTotal" HeaderText="Costo" DataFormatString="{0:$#,0.00}" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="EstadoVisual" HeaderText="Estado" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
 
-                          <asp:BoundField DataField="idReservacion" HeaderText="# reservacion" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                          <asp:BoundField DataField="NombreHotel" HeaderText="Hotel" HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
-                          <asp:BoundField DataField="fechaEntrada" HeaderText="Fecha entrada" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                          <asp:BoundField DataField="fechaSalida" HeaderText="Fecha salida" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                          <asp:BoundField DataField="costoTotal" HeaderText="Costo" DataFormatString="{0:$#,0.00}" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" />
-                          <asp:BoundField DataField="EstadoVisual" HeaderText="Estado" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+            
+            <asp:TemplateField HeaderText="Acciones" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+    <ItemTemplate>
+        <%# Eval("estado").ToString() == "A" ? 
+            $"<a href='EditarReservacion.aspx?id={Eval("idReservacion")}'>Editar</a>" : 
+            "<span class='text-danger'>Reservación cancelada</span>" %>
+    </ItemTemplate>
+</asp:TemplateField>
 
-                      </Columns>
-                  </asp:GridView>
-              </div>
+        </Columns>
+    </asp:GridView>
+</div>
+
           </div>
       </div>
   </div>

@@ -121,26 +121,35 @@ namespace SistemaReservaciones.Pages
                     return;
                 }
 
+                
                 // Llamar al SP usando LinqToDB
-                using (var db = new PvProyectoFinalDB("Conn"))
+                using (var db = new PvProyectoFinalDB("Conn")) // Crea una conexión a la base de datos usando la cadena "Conn"
                 {
-                    db.ExecuteProc("sp_InsertarReservacion",
-                        new DataParameter("@idPersona", idCliente),
-                        new DataParameter("@idHabitacion", idHabitacion),
-                        new DataParameter("@fechaEntrada", fechaEntrada),
-                        new DataParameter("@fechaSalida", fechaSalida),
-                        new DataParameter("@numeroAdultos", adultos),
-                        new DataParameter("@numeroNinhos", ninos),
-                        new DataParameter("@estado", 'A')
-                    );
+                    // Ejecuta el procedimiento almacenado que inserta la reservación y devuelve la info, como el ID generado
+                    var resultado = db.SpInsertarReservacion(idCliente, idHabitacion, fechaEntrada, fechaSalida, adultos, ninos, 'A').FirstOrDefault();
+
+                    // Extrae el ID de la reservación insertada. Si no hay resultado, asigna -1 por defecto
+                    int idReserva = resultado?.IdReservacion ?? -1;
+
+                    // Si el ID es válido (mayor que 0), redirige al comprobante pasando el ID por la URL
+                    if (idReserva > 0)
+                    {
+                        Response.Redirect("ComprobanteReservacion.aspx?id=" + idReserva);
+                    }
+                    else
+                    {
+                        // Si algo salió mal y no se obtuvo el ID, muestra un mensaje de error en pantalla
+                        lblMensaje.Text = "Error: no se pudo obtener el ID de la reservación.";
+                    }
                 }
-                lblMensaje.Text = "Reservación creada exitosamente.";
+
+
             }
             catch (Exception ex)
-            {
-                lblMensaje.Text = "Error al crear la reservación: " + ex.Message;
+                {
+                    lblMensaje.Text = "Error al crear la reservación: " + ex.Message;
+                }
             }
-        }
 
         protected void btnRegresar_Click(object sender, EventArgs e)
         {

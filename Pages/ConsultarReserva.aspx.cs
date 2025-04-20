@@ -200,6 +200,7 @@ namespace SistemaReservaciones.Pages
                 connection.Open();
                 command.ExecuteNonQuery();
             }
+           
         }
 
         protected void btnCancelarReservacion_Click(object sender, EventArgs e)

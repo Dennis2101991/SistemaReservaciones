@@ -11,25 +11,25 @@ namespace SistemaReservaciones.Pages
 {
 
 
-    public partial class Misreservaciones
+    public partial class Bitacora
     {
 
         /// <summary>
-        /// Control lblMensaje.
+        /// Control form1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensaje;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control gvMisReservaciones.
+        /// Control gvBitacora.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvMisReservaciones;
+        protected global::System.Web.UI.WebControls.GridView gvBitacora;
     }
 }
