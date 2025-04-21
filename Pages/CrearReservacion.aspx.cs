@@ -189,7 +189,7 @@ namespace SistemaReservaciones.Pages
                 DateTime fechaEntrada = DateTime.ParseExact(txtFechaEntrada.Text, "dd/MM/yyyy", null);
                 DateTime fechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy", null);
                 decimal total = CalcularCostoTotal(idHabitacion, fechaEntrada, fechaSalida, adultos, ninos);
-                txtTotal.Text = total.ToString("C");
+                txtTotal.Text = total.ToString("$");
             }
         }
 
@@ -212,7 +212,7 @@ namespace SistemaReservaciones.Pages
                 DateTime fechaEntrada = DateTime.ParseExact(txtFechaEntrada.Text, "dd/MM/yyyy", null);
                 DateTime fechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy", null);
                 decimal total = CalcularCostoTotal(idHabitacion, fechaEntrada, fechaSalida, adultos, ninos);
-                txtTotal.Text = total.ToString("C");
+                txtTotal.Text = total.ToString("$");
             }
             catch
             {

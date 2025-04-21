@@ -36,7 +36,7 @@ namespace SistemaReservaciones.Pages
                                     lblFechaEntrada.Text =  reserva.FechaEntrada.ToShortDateString();
                                     lblFechaSalida.Text =  reserva.FechaSalida.ToShortDateString();
                                     lblHabitacion.Text =  reserva.NumeroHabitacion;
-                                    lblTotal.Text = "₡" + reserva.CostoTotal;
+                                    lblTotal.Text = "$" + reserva.CostoTotal;
                                 }
                                 else
                                 {

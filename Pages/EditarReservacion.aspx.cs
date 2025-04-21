@@ -43,7 +43,7 @@ namespace SistemaReservaciones.Pages
                                 ddlNinos.SelectedValue = reserva.NumeroNinhos.ToString();
                                 txtFechaEntrada.Text = reserva.FechaEntrada.ToString("dd/MM/yyyy");
                                 txtFechaSalida.Text = reserva.FechaSalida.ToString("dd/MM/yyyy");
-                                txtTotal.Text = reserva.CostoTotal.ToString("C");
+                                txtTotal.Text = reserva.CostoTotal.ToString("₡");
                             }
                             else
                             {
