@@ -7,101 +7,110 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SistemaReservaciones
+namespace SistemaReservaciones.Pages
 {
 
 
-    public partial class SiteMaster
+    public partial class EditarHabitacion
     {
 
         /// <summary>
-        /// Control liGestionarReservaciones.
+        /// Control vsErrores.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liGestionarReservaciones;
+        protected global::System.Web.UI.WebControls.ValidationSummary vsErrores;
 
         /// <summary>
-        /// Control liGestionarHabitaciones.
+        /// Control lblHotel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liGestionarHabitaciones;
+        protected global::System.Web.UI.WebControls.TextBox lblHotel;
 
         /// <summary>
-        /// Control liBitacora.
+        /// Control txtNumero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liBitacora;
+        protected global::System.Web.UI.WebControls.TextBox txtNumero;
 
         /// <summary>
-        /// Control lbtnCerrarSession.
+        /// Control rfvNumero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnCerrarSession;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNumero;
 
         /// <summary>
-        /// Control pnlConfirmaCerrarSesion.
+        /// Control txtCapacidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlConfirmaCerrarSesion;
+        protected global::System.Web.UI.WebControls.TextBox txtCapacidad;
 
         /// <summary>
-        /// Control lblConfirmacion.
+        /// Control rfvCapacidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblConfirmacion;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCapacidad;
 
         /// <summary>
-        /// Control btnConfirmaCerrarSesion.
+        /// Control rvCapacidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirmaCerrarSesion;
+        protected global::System.Web.UI.WebControls.RangeValidator rvCapacidad;
 
         /// <summary>
-        /// Control btnCancelaCerrarSesion.
+        /// Control txtDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelaCerrarSesion;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
 
         /// <summary>
-        /// Control lblNombreCompleto.
+        /// Control rfvDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombreCompleto;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcion;
 
         /// <summary>
-        /// Control MainContent.
+        /// Control btnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
+
+        /// <summary>
+        /// Control btnInactivar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnInactivar;
     }
 }

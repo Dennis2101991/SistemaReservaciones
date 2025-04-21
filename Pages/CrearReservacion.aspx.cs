@@ -1,4 +1,4 @@
-﻿// NuevaReservacion.aspx.cs
+﻿
 using DataModels;
 using LinqToDB;
 using LinqToDB.Data;

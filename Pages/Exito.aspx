@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="alert alert-primary" role="alert">
-  La reserva se borro con exito!
+  La habitacion se registro con exito!
 </div>
 
 </asp:Content>

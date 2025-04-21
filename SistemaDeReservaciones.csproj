@@ -104,9 +104,11 @@
     <Content Include="Pages\Comprobante.aspx" />
     <Content Include="Pages\ComprobanteReservacion.aspx" />
     <Content Include="Pages\ConsultarReserva.aspx" />
+    <Content Include="Pages\CrearHabitacion.aspx" />
+    <Content Include="Pages\DetalleReservacion.aspx" />
+    <Content Include="Pages\EditarHabitacion.aspx" />
     <Content Include="Pages\Error.aspx" />
     <Content Include="Pages\Exito.aspx" />
-    <Content Include="Pages\GestionarHabitaciones.aspx" />
     <Content Include="Pages\GestionarReservaciones.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Misreservaciones.aspx" />
@@ -260,6 +262,27 @@
     <Compile Include="Pages\ConsultarReserva.aspx.designer.cs">
       <DependentUpon>ConsultarReserva.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CrearHabitacion.aspx.cs">
+      <DependentUpon>CrearHabitacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CrearHabitacion.aspx.designer.cs">
+      <DependentUpon>CrearHabitacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DetalleReservacion.aspx.cs">
+      <DependentUpon>DetalleReservacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DetalleReservacion.aspx.designer.cs">
+      <DependentUpon>DetalleReservacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditarHabitacion.aspx.cs">
+      <DependentUpon>EditarHabitacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EditarHabitacion.aspx.designer.cs">
+      <DependentUpon>EditarHabitacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -273,13 +296,6 @@
     </Compile>
     <Compile Include="Pages\Exito.aspx.designer.cs">
       <DependentUpon>Exito.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\GestionarHabitaciones.aspx.cs">
-      <DependentUpon>GestionarHabitaciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\GestionarHabitaciones.aspx.designer.cs">
-      <DependentUpon>GestionarHabitaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\GestionarReservaciones.aspx.cs">
       <DependentUpon>GestionarReservaciones.aspx</DependentUpon>

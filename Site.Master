@@ -50,8 +50,8 @@
 
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Misreservaciones.aspx">Mis Reservaciones</a></li>
                         <li id="liGestionarReservaciones" class="nav-item" runat="server"><a class="nav-link" href='<%= ResolveUrl("~/Pages/GestionarReservaciones.aspx") %>'>Gestionar reservaciones</a></li>
-                        <li id="liGestionarHabitaciones" class="nav-item" runat="server"><a class="nav-link"  href="~/Pages/GestionarHabitaciones.aspx">Gestionar habitaciones</a></li>
-
+                        <li id="liGestionarHabitaciones" class="nav-item" runat="server"><a class="nav-link"  href='<%= ResolveUrl("~/Pages/CrearHabitacion.aspx") %>'>Gestionar habitaciones</a></li>
+                         <li id="liBitacora" class="nav-item" runat="server"><a class="nav-link"  href='<%= ResolveUrl("~/Pages/Bitacora.aspx") %>'>Bitacora</a></li>
                         <li class="nav-item">
                          <%--Boton para cerrar la sesión--%>
                         <asp:LinkButton ID="lbtnCerrarSession" runat="server" CssClass="nav-link" OnClick="lbtnCerrarSession_Click">Cerrar Sesión</asp:LinkButton>

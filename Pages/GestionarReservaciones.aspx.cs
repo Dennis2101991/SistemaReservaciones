@@ -153,7 +153,7 @@ namespace SistemaReservaciones.Pages
             {
                 int idReservacion = Convert.ToInt32(e.CommandArgument);
                 // Redirige a la página de modificación pasando el id de la reservación por querystring.
-                Response.Redirect("ConsultarReserva.aspx?id=" + idReservacion);
+                Response.Redirect("DetalleReservacion.aspx?id=" + idReservacion);
             }
         }
 

@@ -38,6 +38,7 @@ namespace SistemaReservaciones
                 // Oculta o muestra las opciones según el rol del usuario.
                 liGestionarReservaciones.Visible = esEmpleado;
                 liGestionarHabitaciones.Visible = esEmpleado;
+                liBitacora.Visible = esEmpleado;
             }
         }
 

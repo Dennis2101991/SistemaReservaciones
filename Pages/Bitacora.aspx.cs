@@ -11,13 +11,20 @@ namespace SistemaReservaciones.Pages
         {
             if (!IsPostBack)
             {
-                CargarBitacora();
+                if (Session["idPersona"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                    return;
+                }
+
             }
+            CargarBitacora();
         }
+
 
         private void CargarBitacora()
         {
-            using (var db = new PvProyectoFinalDB("Conn"))
+            using (var db = new PvProyectoFinalDB("Conn")) // conexion a db
             {
                 var registros = db.SpConsultarBitacora();
                 gvBitacora.DataSource = registros;
