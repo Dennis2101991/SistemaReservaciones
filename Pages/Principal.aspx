@@ -25,6 +25,8 @@
     </div>
 
     <!-- Pie de pagina  -->
+
+    <!-- Pie de pagina  -->
     <footer class="text-center py-4">
         <p>&copy; 2025 Hotel Paradise. Todos los derechos reservados.</p>
     </footer>
